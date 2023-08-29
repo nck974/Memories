@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:photo_quiz/pages/prize/components/image_carousel.dart';
+import 'package:photo_quiz/pages/prize/images_service.dart';
 
 class PrizePage extends StatefulWidget {
   final int level;
@@ -10,16 +11,27 @@ class PrizePage extends StatefulWidget {
 }
 
 class _PrizePageState extends State<PrizePage> {
-  final List<String> imageUrls = [
-    'assets/images/1/IMG_20230105_124317.jpg',
-    'assets/images/1/IMG_20230105_143752.jpg',
-  ];
+  List<String> imageUrls = [];
+
+  @override
+  void initState() {
+    super.initState();
+    getImagesInDirectory("assets/images/${widget.level}/").then((images) {
+      setState(() {
+        imageUrls = images;
+      });
+    });
+  }
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(title: Text("${widget.level} completed!")),
-      body: ImageCarousel(imageUrls: imageUrls),
+      body: imageUrls.isEmpty
+          ? const Center(
+              child: CircularProgressIndicator(),
+            )
+          : ImageCarousel(imageUrls: imageUrls),
     );
   }
 }

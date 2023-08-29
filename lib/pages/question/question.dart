@@ -1,16 +1,11 @@
 import 'package:flutter/material.dart';
+import 'package:photo_quiz/model/quiz_question.dart';
 import 'package:photo_quiz/pages/prize/prize.dart';
 
 class QuestionPage extends StatefulWidget {
-  final String question;
-  final int level;
-  final String correctAnswer;
+  final QuizQuestion question;
 
-  const QuestionPage(
-      {super.key,
-      required this.question,
-      required this.level,
-      required this.correctAnswer});
+  const QuestionPage({super.key, required this.question});
 
   @override
   State<QuestionPage> createState() => _QuestionPageState();
@@ -36,7 +31,7 @@ class _QuestionPageState extends State<QuestionPage> {
     if (answer == null || answer.isEmpty) {
       return 'Please provide an answer.';
     }
-    if (answer != widget.correctAnswer) {
+    if (answer != widget.question.correctAnswer) {
       return "The answer '$answer' is not correct.";
     }
 
@@ -49,7 +44,7 @@ class _QuestionPageState extends State<QuestionPage> {
     });
 
     if (_formKey.currentState!.validate() && _answerValidationError == null) {
-      _navigateToPrize(widget.level);
+      _navigateToPrize(widget.question.level);
     }
   }
 
@@ -57,7 +52,7 @@ class _QuestionPageState extends State<QuestionPage> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text("Level: ${widget.level}"),
+        title: Text("Level: ${widget.question.level}"),
       ),
       body: Form(
         key: _formKey,
@@ -66,7 +61,7 @@ class _QuestionPageState extends State<QuestionPage> {
           crossAxisAlignment: CrossAxisAlignment.center,
           children: [
             Text(
-              widget.question,
+              widget.question.question,
               style: const TextStyle(fontSize: 18),
             ),
             const SizedBox(height: 16),
