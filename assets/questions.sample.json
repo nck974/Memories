@@ -1,0 +1,12 @@
+[
+    {
+        "level": 1,
+        "question": "When did something happen on x day of y year?",
+        "correctAnswer": "t"
+    },
+    {
+        "level": 2,
+        "question": "How was something on other place?",
+        "correctAnswer": "s"
+    }
+]
