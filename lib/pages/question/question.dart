@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:photo_quiz/model/quiz_question.dart';
 import 'package:photo_quiz/pages/prize/prize.dart';
+import 'package:photo_quiz/services/level_service.dart';
+import 'package:provider/provider.dart';
 
 class QuestionPage extends StatefulWidget {
   final QuizQuestion question;
@@ -38,13 +40,20 @@ class _QuestionPageState extends State<QuestionPage> {
     return null;
   }
 
+  Future<void> _setCurrentLevel() {
+    int newLevel = widget.question.level + 1;
+    return Provider.of<LevelService>(context, listen: false).setLevel(newLevel);
+  }
+
   void _onSubmitAnswer(String answer) {
     setState(() {
       _answerValidationError = _validateAnswer(answer);
     });
 
     if (_formKey.currentState!.validate() && _answerValidationError == null) {
-      _navigateToPrize(widget.question.level);
+      _setCurrentLevel().then((_) {
+        _navigateToPrize(widget.question.level);
+      });
     }
   }
 
