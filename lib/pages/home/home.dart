@@ -1,10 +1,10 @@
 import 'package:flutter/material.dart';
-import 'package:photo_quiz/model/quiz_question.dart';
-import 'package:photo_quiz/pages/home/components/level_box.dart';
-import 'package:photo_quiz/pages/home/question_service.dart';
-import 'package:photo_quiz/pages/prize/prize.dart';
-import 'package:photo_quiz/pages/question/question.dart';
-import 'package:photo_quiz/services/level_service.dart';
+import 'package:memories/model/quiz_question.dart';
+import 'package:memories/pages/home/components/level_box.dart';
+import 'package:memories/pages/home/question_service.dart';
+import 'package:memories/pages/prize/prize.dart';
+import 'package:memories/pages/question/question.dart';
+import 'package:memories/services/level_service.dart';
 import 'package:provider/provider.dart';
 
 class HomePage extends StatefulWidget {
@@ -15,7 +15,7 @@ class HomePage extends StatefulWidget {
 }
 
 class _HomePageState extends State<HomePage> {
-  final String title = "Photo Quiz";
+  final String title = "Memories";
   final int columnCount = 2;
   int currentLevel = 0;
   List<QuizQuestion> questions = [];
@@ -84,7 +84,11 @@ class _HomePageState extends State<HomePage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(title: Text(title)),
+      appBar: AppBar(
+        title: Text(
+          title,
+        ),
+      ),
       body: questions.isEmpty
           ? const Center(child: CircularProgressIndicator())
           : GridView.count(

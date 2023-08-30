@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:photo_quiz/model/quiz_question.dart';
-import 'package:photo_quiz/pages/prize/prize.dart';
-import 'package:photo_quiz/services/level_service.dart';
+import 'package:memories/model/quiz_question.dart';
+import 'package:memories/pages/prize/prize.dart';
+import 'package:memories/services/level_service.dart';
 import 'package:provider/provider.dart';
 
 class QuestionPage extends StatefulWidget {
@@ -66,12 +66,16 @@ class _QuestionPageState extends State<QuestionPage> {
       body: Form(
         key: _formKey,
         child: Column(
-          mainAxisAlignment: MainAxisAlignment.center,
+          mainAxisAlignment: MainAxisAlignment.start,
           crossAxisAlignment: CrossAxisAlignment.center,
           children: [
-            Text(
-              widget.question.question,
-              style: const TextStyle(fontSize: 18),
+            const SizedBox(height: 32),
+            Padding(
+              padding: const EdgeInsets.symmetric(horizontal: 24.0),
+              child: Text(
+                widget.question.question,
+                style: const TextStyle(fontSize: 18),
+              ),
             ),
             const SizedBox(height: 16),
             Padding(

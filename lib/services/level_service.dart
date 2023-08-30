@@ -1,5 +1,5 @@
 import 'package:flutter/foundation.dart';
-import 'package:photo_quiz/services/storage_service.dart';
+import 'package:memories/services/storage_service.dart';
 
 class LevelService extends ChangeNotifier {
   final StorageService _storageService;

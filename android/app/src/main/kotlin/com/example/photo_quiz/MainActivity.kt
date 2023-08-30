@@ -1,4 +1,4 @@
-package com.example.photo_quiz
+package com.example.memories
 
 import io.flutter.embedding.android.FlutterActivity
 

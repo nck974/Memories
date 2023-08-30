@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:photo_quiz/pages/prize/components/image_carousel.dart';
-import 'package:photo_quiz/pages/prize/images_service.dart';
+import 'package:memories/pages/prize/components/image_carousel.dart';
+import 'package:memories/pages/prize/images_service.dart';
 
 class PrizePage extends StatefulWidget {
   final int level;
@@ -26,7 +26,7 @@ class _PrizePageState extends State<PrizePage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(title: Text("${widget.level} completed!")),
+      appBar: AppBar(title: const Text("Memories:")),
       body: imageUrls.isEmpty
           ? const Center(
               child: CircularProgressIndicator(),

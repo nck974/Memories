@@ -1,7 +1,7 @@
 import 'dart:convert';
 
 import 'package:flutter/services.dart';
-import 'package:photo_quiz/model/quiz_question.dart';
+import 'package:memories/model/quiz_question.dart';
 
 Future<List<QuizQuestion>> loadQuestions() async {
   print("Loading questions...");

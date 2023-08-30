@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:photo_quiz/pages/home/home.dart';
-import 'package:photo_quiz/services/level_service.dart';
-import 'package:photo_quiz/services/storage_service.dart';
+import 'package:memories/pages/home/home.dart';
+import 'package:memories/services/level_service.dart';
+import 'package:memories/services/storage_service.dart';
 import 'package:provider/provider.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
@@ -26,11 +26,21 @@ class MyApp extends StatelessWidget {
             create: (context) => LevelService(storageService),
             builder: (context, child) {
               return MaterialApp(
-                  title: 'Photo Quiz',
+                  title: 'Memories',
                   theme: ThemeData(
-                    colorScheme:
-                        ColorScheme.fromSeed(seedColor: Colors.deepPurple),
+                    brightness: Brightness.dark,
+                    fontFamily: 'Georgia',
+                    colorScheme: ColorScheme.fromSeed(
+                        seedColor: Colors.deepPurple,
+                        brightness: Brightness.dark),
                     useMaterial3: true,
+                    textTheme: const TextTheme(
+                      displayLarge:
+                          TextStyle(fontSize: 72, fontWeight: FontWeight.bold),
+                      titleLarge:
+                          TextStyle(fontSize: 36, fontStyle: FontStyle.italic),
+                      bodyMedium: TextStyle(fontSize: 14, fontFamily: 'Hind'),
+                    ),
                   ),
                   // Use a future builder to await the access to shared preferences
                   home: const HomePage());

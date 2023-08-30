@@ -17,9 +17,9 @@ class LevelBox extends StatelessWidget {
       return Colors.grey;
     }
     if (completed) {
-      return Colors.lightGreen;
+      return Colors.green;
     }
-    return null;
+    return Colors.yellow.shade900;
   }
 
   @override
@@ -37,7 +37,7 @@ class LevelBox extends StatelessWidget {
         child: Center(
           child: Text(
             'Level $index',
-            style: const TextStyle(fontSize: 18),
+            style: const TextStyle(fontSize: 18, fontWeight: FontWeight.bold),
           ),
         ),
       ),
