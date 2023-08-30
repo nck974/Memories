@@ -7,6 +7,11 @@
     {
         "level": 2,
         "question": "How was something on other place?",
-        "correctAnswer": "s"
+        "correctAnswer": "u"
+    },
+    {
+        "level": 3,
+        "question": "How was another thing on other place?",
+        "correctAnswer": "v"
     }
 ]
