@@ -13,6 +13,21 @@ void main() {
 class MyApp extends StatelessWidget {
   const MyApp({super.key});
 
+  ThemeData _setUpTheme() {
+    return ThemeData(
+      brightness: Brightness.dark,
+      fontFamily: 'Georgia',
+      colorScheme: ColorScheme.fromSeed(
+          seedColor: Colors.deepPurple, brightness: Brightness.dark),
+      useMaterial3: true,
+      textTheme: const TextTheme(
+        displayLarge: TextStyle(fontSize: 72, fontWeight: FontWeight.bold),
+        titleLarge: TextStyle(fontSize: 36, fontStyle: FontStyle.italic),
+        bodyMedium: TextStyle(fontSize: 14, fontFamily: 'Hind'),
+      ),
+    );
+  }
+
   @override
   Widget build(BuildContext context) {
     return FutureBuilder<SharedPreferences?>(
@@ -27,21 +42,7 @@ class MyApp extends StatelessWidget {
             builder: (context, child) {
               return MaterialApp(
                   title: 'Memories',
-                  theme: ThemeData(
-                    brightness: Brightness.dark,
-                    fontFamily: 'Georgia',
-                    colorScheme: ColorScheme.fromSeed(
-                        seedColor: Colors.deepPurple,
-                        brightness: Brightness.dark),
-                    useMaterial3: true,
-                    textTheme: const TextTheme(
-                      displayLarge:
-                          TextStyle(fontSize: 72, fontWeight: FontWeight.bold),
-                      titleLarge:
-                          TextStyle(fontSize: 36, fontStyle: FontStyle.italic),
-                      bodyMedium: TextStyle(fontSize: 14, fontFamily: 'Hind'),
-                    ),
-                  ),
+                  theme: _setUpTheme(),
                   // Use a future builder to await the access to shared preferences
                   home: const HomePage());
             },
