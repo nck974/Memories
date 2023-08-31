@@ -16,7 +16,7 @@ class HomePage extends StatefulWidget {
 
 class _HomePageState extends State<HomePage> {
   final String title = "Memories";
-  final int columnCount = 2;
+  final int columnCount = 3;
   int currentLevel = 0;
   List<QuizQuestion> questions = [];
 
@@ -91,21 +91,24 @@ class _HomePageState extends State<HomePage> {
       ),
       body: questions.isEmpty
           ? const Center(child: CircularProgressIndicator())
-          : GridView.count(
-              crossAxisCount: columnCount,
-              children: List.generate(
-                questions.length,
-                (index) {
-                  int level = questions[index].level;
-                  return GestureDetector(
-                    onTap: () => _onTapLevel(index, level),
-                    child: LevelBox(
-                        index: level,
-                        completed: level < currentLevel,
-                        disabled: level > currentLevel,
-                        selected: level == currentLevel),
-                  );
-                },
+          : Padding(
+              padding: const EdgeInsets.symmetric(horizontal: 16.0),
+              child: GridView.count(
+                crossAxisCount: columnCount,
+                children: List.generate(
+                  questions.length,
+                  (index) {
+                    int level = questions[index].level;
+                    return GestureDetector(
+                      onTap: () => _onTapLevel(index, level),
+                      child: LevelBox(
+                          index: level,
+                          completed: level < currentLevel,
+                          disabled: level > currentLevel,
+                          selected: level == currentLevel),
+                    );
+                  },
+                ),
               ),
             ),
     );
