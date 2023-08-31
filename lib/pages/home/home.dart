@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:memories/model/quiz_question.dart';
 import 'package:memories/pages/home/components/level_box.dart';
-import 'package:memories/pages/home/question_service.dart';
+import 'package:memories/pages/home/services/question_service.dart';
 import 'package:memories/pages/prize/prize.dart';
 import 'package:memories/pages/question/question.dart';
 import 'package:memories/services/level_service.dart';

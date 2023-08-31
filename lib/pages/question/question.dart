@@ -33,7 +33,8 @@ class _QuestionPageState extends State<QuestionPage> {
     if (answer == null || answer.isEmpty) {
       return 'Please provide an answer.';
     }
-    if (answer != widget.question.correctAnswer) {
+    if (answer.toLowerCase().trim() !=
+        widget.question.correctAnswer.toLowerCase().trim()) {
       return "The answer '$answer' is not correct.";
     }
 
