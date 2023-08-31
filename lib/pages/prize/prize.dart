@@ -16,7 +16,8 @@ class _PrizePageState extends State<PrizePage> {
   @override
   void initState() {
     super.initState();
-    getImagesInDirectory("assets/images/${widget.level}/").then((images) {
+    getImagesInDirectory("assets/images_resized/${widget.level}/")
+        .then((images) {
       setState(() {
         imageUrls = images;
       });

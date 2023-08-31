@@ -63,26 +63,26 @@ flutter:
   # To add assets to your application, add an assets section, like this:
   assets:
     - assets/questions.json
-    - assets/images/1/
-    - assets/images/2/
-    - assets/images/3/
-    - assets/images/4/
-    - assets/images/5/
-    - assets/images/6/
-    - assets/images/7/
-    - assets/images/8/
-    - assets/images/9/
-    - assets/images/10/
-    - assets/images/11/
-    - assets/images/12/
-    - assets/images/13/
-    - assets/images/14/
-    - assets/images/15/
-    - assets/images/16/
-    - assets/images/17/
-    - assets/images/18/
-    - assets/images/19/
-    - assets/images/20/
+    - assets/images_resized/1/
+    - assets/images_resized/2/
+    - assets/images_resized/3/
+    - assets/images_resized/4/
+    - assets/images_resized/5/
+    - assets/images_resized/6/
+    - assets/images_resized/7/
+    - assets/images_resized/8/
+    - assets/images_resized/9/
+    - assets/images_resized/10/
+    - assets/images_resized/11/
+    - assets/images_resized/12/
+    - assets/images_resized/13/
+    - assets/images_resized/14/
+    - assets/images_resized/15/
+    - assets/images_resized/16/
+    - assets/images_resized/17/
+    - assets/images_resized/18/
+    - assets/images_resized/19/
+    - assets/images_resized/20/
 
   # An image asset can refer to one or more resolution-specific "variants", see
   # https://flutter.dev/assets-and-images/#resolution-aware
