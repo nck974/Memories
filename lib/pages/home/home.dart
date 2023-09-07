@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:memories/model/gift.dart';
 import 'package:memories/model/quiz_question.dart';
+import 'package:memories/pages/gift/gift.dart';
 import 'package:memories/pages/home/components/level_box.dart';
 import 'package:memories/pages/home/services/question_service.dart';
 import 'package:memories/pages/prize/prize.dart';
@@ -44,6 +46,17 @@ class _HomePageState extends State<HomePage> {
     );
   }
 
+  void _navigateToGift(int index) {
+    Navigator.push(
+      context,
+      MaterialPageRoute(
+        builder: (context) => GiftPage(
+          gift: questions[index].gift!,
+        ),
+      ),
+    );
+  }
+
   @override
   void initState() {
     super.initState();
@@ -75,7 +88,12 @@ class _HomePageState extends State<HomePage> {
       return;
     }
     if (level < currentLevel) {
-      _navigateToPrize(index);
+      Gift? gift = questions[index].gift;
+      if (gift != null) {
+        _navigateToGift(index);
+      } else {
+        _navigateToPrize(index);
+      }
       return;
     }
     _navigateToQuestion(index);

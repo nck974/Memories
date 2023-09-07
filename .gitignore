@@ -47,6 +47,7 @@ app.*.map.json
 /assets/images/*
 /assets/images_resized/*
 /assets/questions.json
+/assets/questions.backup.json
 
 # Python virtual environment
 .venv

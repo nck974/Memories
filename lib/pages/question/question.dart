@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:memories/model/gift.dart';
 import 'package:memories/model/quiz_question.dart';
+import 'package:memories/pages/gift/gift.dart';
 import 'package:memories/pages/prize/prize.dart';
 import 'package:memories/services/level_service.dart';
 import 'package:provider/provider.dart';
@@ -29,6 +31,17 @@ class _QuestionPageState extends State<QuestionPage> {
     );
   }
 
+  void _navigateToGift(Gift gift) {
+    Navigator.pushReplacement(
+      context,
+      MaterialPageRoute(
+        builder: (context) => GiftPage(
+          gift: gift,
+        ),
+      ),
+    );
+  }
+
   String? _validateAnswer(String? answer) {
     if (answer == null || answer.isEmpty) {
       return 'Please provide an answer.';
@@ -53,6 +66,10 @@ class _QuestionPageState extends State<QuestionPage> {
 
     if (_formKey.currentState!.validate() && _answerValidationError == null) {
       _setCurrentLevel().then((_) {
+        Gift? gift = widget.question.gift;
+        if (gift != null) {
+          _navigateToGift(gift);
+        }
         _navigateToPrize(widget.question.level);
       });
     }

@@ -7,7 +7,11 @@
     {
         "level": 2,
         "question": "How was something on other place?",
-        "correctAnswer": "u"
+        "correctAnswer": "u",
+        "gift": {
+            "name": "You won a gift!",
+            "conditions": "Only applies on x days."
+        }
     },
     {
         "level": 3,
