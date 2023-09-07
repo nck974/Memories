@@ -80,7 +80,6 @@ flutter:
     - assets/images_resized/7/
     - assets/images_resized/8/
     - assets/images_resized/9/
-    - assets/images_resized/10/
     - assets/images_resized/11/
     - assets/images_resized/12/
     - assets/images_resized/13/
@@ -90,8 +89,19 @@ flutter:
     - assets/images_resized/17/
     - assets/images_resized/18/
     - assets/images_resized/19/
-    - assets/images_resized/20/
-
+    - assets/images_resized/21/
+    - assets/images_resized/22/
+    - assets/images_resized/23/
+    - assets/images_resized/24/
+    - assets/images_resized/25/
+    - assets/images_resized/26/
+    - assets/images_resized/27/
+    - assets/images_resized/28/
+    - assets/images_resized/29/
+    - assets/images_resized/31/
+    - assets/images_resized/32/
+    - assets/images_resized/33/
+    - assets/images_resized/34/
   # An image asset can refer to one or more resolution-specific "variants", see
   # https://flutter.dev/assets-and-images/#resolution-aware
 

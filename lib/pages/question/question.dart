@@ -69,8 +69,9 @@ class _QuestionPageState extends State<QuestionPage> {
         Gift? gift = widget.question.gift;
         if (gift != null) {
           _navigateToGift(gift);
+        } else {
+          _navigateToPrize(widget.question.level);
         }
-        _navigateToPrize(widget.question.level);
       });
     }
   }
