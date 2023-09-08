@@ -3,10 +3,12 @@ import 'package:memories/model/gift.dart';
 import 'package:memories/model/quiz_question.dart';
 import 'package:memories/pages/gift/gift.dart';
 import 'package:memories/pages/home/components/level_box.dart';
+import 'package:memories/pages/home/components/terms_and_conditions.dart';
 import 'package:memories/pages/home/services/question_service.dart';
 import 'package:memories/pages/prize/prize.dart';
 import 'package:memories/pages/question/question.dart';
 import 'package:memories/services/level_service.dart';
+import 'package:memories/services/terms_and_conditions_service.dart';
 import 'package:provider/provider.dart';
 
 class HomePage extends StatefulWidget {
@@ -21,6 +23,7 @@ class _HomePageState extends State<HomePage> {
   final int columnCount = 3;
   int currentLevel = 0;
   List<QuizQuestion> questions = [];
+  bool termsAccepted = false;
 
   void _navigateToQuestion(int index) {
     Navigator.push(
@@ -65,6 +68,7 @@ class _HomePageState extends State<HomePage> {
         this.questions = questions;
       });
     });
+    Future.delayed(const Duration(milliseconds: 100), _setTermsAndConditions);
     Future.delayed(const Duration(milliseconds: 100), _setCurrentLevel);
   }
 
@@ -83,6 +87,18 @@ class _HomePageState extends State<HomePage> {
     });
   }
 
+  void _setTermsAndConditions() {
+    bool? termsAndConditions =
+        Provider.of<TermsAndConditionsService>(context, listen: false)
+            .getTermsAndConditions();
+    print("Terms and conditions is $currentLevel");
+    if (termsAndConditions != null) {
+      setState(() {
+        termsAccepted = termsAndConditions;
+      });
+    }
+  }
+
   void _onTapLevel(int index, int level) {
     if (level > currentLevel) {
       return;
@@ -99,6 +115,39 @@ class _HomePageState extends State<HomePage> {
     _navigateToQuestion(index);
   }
 
+  Widget _buildQuestions() {
+    return Padding(
+      padding: const EdgeInsets.symmetric(horizontal: 16.0),
+      child: GridView.count(
+        crossAxisCount: columnCount,
+        children: List.generate(
+          questions.length,
+          (index) {
+            int level = questions[index].level;
+            return GestureDetector(
+              onTap: () => _onTapLevel(index, level),
+              child: LevelBox(
+                  index: level,
+                  completed: level < currentLevel,
+                  disabled: level > currentLevel,
+                  selected: level == currentLevel),
+            );
+          },
+        ),
+      ),
+    );
+  }
+
+  void _onAcceptConditions() {
+    Provider.of<TermsAndConditionsService>(context, listen: false)
+        .setTermsAndConditions(true)
+        .then((value) => {
+              setState(() {
+                termsAccepted = true;
+              })
+            });
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -109,26 +158,9 @@ class _HomePageState extends State<HomePage> {
       ),
       body: questions.isEmpty
           ? const Center(child: CircularProgressIndicator())
-          : Padding(
-              padding: const EdgeInsets.symmetric(horizontal: 16.0),
-              child: GridView.count(
-                crossAxisCount: columnCount,
-                children: List.generate(
-                  questions.length,
-                  (index) {
-                    int level = questions[index].level;
-                    return GestureDetector(
-                      onTap: () => _onTapLevel(index, level),
-                      child: LevelBox(
-                          index: level,
-                          completed: level < currentLevel,
-                          disabled: level > currentLevel,
-                          selected: level == currentLevel),
-                    );
-                  },
-                ),
-              ),
-            ),
+          : termsAccepted
+              ? _buildQuestions()
+              : TermsAndConditions(onAcceptConditions: _onAcceptConditions),
     );
   }
 }

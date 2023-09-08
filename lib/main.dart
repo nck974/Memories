@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:memories/pages/home/home.dart';
 import 'package:memories/services/level_service.dart';
 import 'package:memories/services/storage_service.dart';
+import 'package:memories/services/terms_and_conditions_service.dart';
 import 'package:provider/provider.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
@@ -37,16 +38,21 @@ class MyApp extends StatelessWidget {
             snapshot.hasData) {
           final preferences = snapshot.data as SharedPreferences;
           final storageService = StorageService(preferences);
-          return ChangeNotifierProvider(
-            create: (context) => LevelService(storageService),
-            builder: (context, child) {
-              return MaterialApp(
+          return MultiProvider(
+              providers: [
+                ChangeNotifierProvider<LevelService>(
+                  create: (context) => LevelService(storageService),
+                ),
+                ChangeNotifierProvider<TermsAndConditionsService>(
+                  create: (context) =>
+                      TermsAndConditionsService(storageService),
+                ),
+              ],
+              child: MaterialApp(
                   title: 'Memories',
                   theme: _setUpTheme(),
                   // Use a future builder to await the access to shared preferences
-                  home: const HomePage());
-            },
-          );
+                  home: const HomePage()));
         } else {
           return const Center(child: CircularProgressIndicator());
         }
