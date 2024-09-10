@@ -3,7 +3,7 @@ import 'package:memories/model/gift.dart';
 
 class GiftPage extends StatefulWidget {
   final Gift gift;
-  const GiftPage({Key? key, required this.gift}) : super(key: key);
+  const GiftPage({super.key, required this.gift});
 
   @override
   State<GiftPage> createState() => _GiftPageState();
